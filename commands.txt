@@ -1,0 +1,6 @@
+ctrl + a  select all 
+ctrl + z undo
+ctrl + x = cut //removing data and copying
+ctrl + c = copy
+ctrl + v = paste
+ctrl + / = comment
