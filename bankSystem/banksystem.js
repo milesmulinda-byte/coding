@@ -6,8 +6,8 @@ const rl = readline.createInterface({
 });
 
 // Helper to promisify rl.question
-const ask = (question) =>
-  new Promise((resolve) => rl.question(question, resolve));
+// const ask = (question) =>
+//   new Promise((resolve) => rl.question(question, resolve));
 
 class BankAccount {
   constructor(accountNumber, accountHolder, balance) {
@@ -55,14 +55,14 @@ function findAccountByNumber(number) {
   return accounts.find((a) => a.accountNumber === number) || null;
 }
 
-async function createAccount() {
-  const number = parseInt(await ask("Enter account number: "));
-  const holder = await ask("Enter account holder name: ");
-  const balance = parseFloat(await ask("Enter initial balance: "));
-  const account = new BankAccount(number, holder, balance);
-  accounts.push(account);
-  console.log(`\nAccount created successfully for ${holder}.\n`);
-}
+// async function createAccount() {
+//   const number = parseInt(await ask("Enter account number: "));
+//   const holder = await ask("Enter account holder name: ");
+//   const balance = parseFloat(await ask("Enter initial balance: "));
+//   const account = new BankAccount(number, holder, balance);
+//   accounts.push(account);
+//   console.log(`\nAccount created successfully for ${holder}.\n`);
+// }
 
 function viewAccounts() {
   if (accounts.length === 0) {
@@ -86,16 +86,16 @@ function findRichestAccount() {
   return accounts.reduce((max, a) => (a.balance > max.balance ? a : max), accounts[0]);
 }
 
-async function closeAccount() {
-  const number = parseInt(await ask("Enter account number to close: "));
-  const index = accounts.findIndex((a) => a.accountNumber === number);
-  if (index === -1) {
-    console.log("Account not found.\n");
-  } else {
-    const removed = accounts.splice(index, 1)[0];
-    console.log(`Account of ${removed.accountHolder} closed successfully.\n`);
-  }
-}
+// async function closeAccount() {
+//   const number = parseInt(await ask("Enter account number to close: "));
+//   const index = accounts.findIndex((a) => a.accountNumber === number);
+//   if (index === -1) {
+//     console.log("Account not found.\n");
+//   } else {
+//     const removed = accounts.splice(index, 1)[0];
+//     console.log(`Account of ${removed.accountHolder} closed successfully.\n`);
+//   }
+// }
 
 async function main() {
   console.log("\n--- Welcome to the Bank ---\n");
@@ -120,10 +120,10 @@ async function main() {
       await createAccount();
 
     } else if (option === 2) {
-      const number = parseInt(await ask("Enter account number: "));
-      const account = findAccountByNumber(number);
-      if (account) account.displayAccountInfo();
-      else console.log("Account not found.\n");
+      // const number = parseInt(await ask("Enter account number: "));
+      // const account = findAccountByNumber(number);
+      // if (account) account.displayAccountInfo();
+      // else console.log("Account not found.\n");
 
     } else if (option === 3) {
       const number = parseInt(await ask("Enter account number: "));

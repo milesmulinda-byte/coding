@@ -1,0 +1,206 @@
+* {
+box-sizing: border box;
+margin: 0;
+padding: 0;
+}
+ body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #f4f5f7;
+  color: #1a1a2e;
+  line-height: 1.6;
+
+
+ }
+
+ .header{
+     background-color: #1a1a2e;
+  color: white;
+  padding: 1.2rem 2rem;
+
+ }
+ .header h1{
+    font-size: 1.4rem;
+    font-weight: 500;
+ }
+ .summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1.5rem 2rem 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+ .summary-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid #e0e0e0;
+}
+.summary-label {
+    font-size: 0.8rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-botton: 0.3rem;
+
+}
+.summary-value {
+    font-size:1.8rem;
+    font-weight: 500;
+    color: #1a1a2e;
+}
+.container{
+    max-width: 800px;
+    margin: 1.5rem auto;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    padding: 1.5rem;
+}
+.tab {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #666;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.2s;
+}
+.tab:hover {
+  color: #1a1a2e;
+}
+.tab.active {
+  color: #1a1a2e;
+  border-bottom-color: #1a1a2e;
+  font-weight: 500;
+}
+.panel {
+  display: none;
+}
+
+.panel.active {
+  display: block;
+}
+.form-group{
+    margin-bottom: 1rem;
+}
+.form-group label {
+    display: block;
+    font-size: 0.875rem;
+    color: #444;
+    margin-bottom: 0.4rem;
+
+}
+.form-group input{
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0 12px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.form-group input:focus {
+  border-color: #1a1a2e;
+}
+
+/* ── BUTTONS ─────────────────────────────────────────────── */
+button {
+  padding: 9px 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: white;
+  font-size: 0.875rem;
+  cursor: pointer; /* shows the hand cursor on hover */
+  transition: background 0.15s;
+}
+
+button:hover {
+  background: #f0f0f0;
+}
+
+.btn-primary {
+  background: #1a1a2e;
+  color: white;
+  border-color: #1a1a2e;
+}
+
+.btn-primary:hover {
+  background: #2d2d4e;
+}
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+}
+
+/* ── ACCOUNT ROWS ───────────────────────────────────────── */
+.account-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  background: #fafafa;
+}
+
+.account-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e8eaf6;
+  color: #3949ab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.account-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.account-number {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.account-balance {
+  margin-left: auto; /* pushes balance to the far right */
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* ── MESSAGES ───────────────────────────────────────────── */
+.message {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  min-height: 14px; /* stops the layout jumping when it appears */
+}
+
+/* JS adds these classes to colour the message box */
+.message.success {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.message.error {
+  background: #fdecea;
+  color: #c62828;
+}
+
+.empty-msg {
+  font-size: 0.875rem;
+  color: #999;
+  padding: 1rem 0;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank System</title>
+    <link rel="stylesheet" href="bank.css">
+    
+</head>
+<body>
+    <header class="header">
+        <h1> Bank System</h1>
+    </header>
+    <div class=""summary-grid>
+        <p class="summary-card"></p></p>
+        <p class="summary-label">Total balance</p>
+        <p class="summary-value" id="Total Balance">$0.00</p>
+
+    </div>    
+    <div class="summary-card">
+        <p class="summary-label"> Total Acccounts</p>
+        <p class="summary-value" id="Total Account">0</p>
+
+    </div>
+</div>
+<main class="container">
+<div class="tabs" role="tablist">
+<button class="tab active" onclick="switchTab('accounts')" role="tab">All accounts</button>
+<button class="tab active" onclicl="switchTab('Create')" role="tab">Create an account</button>
+<button class="tab active" onclick="switchTab('Deposit')" role="tab"> Deposit / Withdrawal</button>
+<button class="tab active" onclick="switchTab('Transfer')" role="tab">Transfer</button>
+
+ <div id="panel-accounts" class="panel active">
+      <div id="accounts-list">
+        <p class="empty-msg">No accounts yet. Create one to get started.</p>
+      </div>
+    </div>
+    <div id="panel-create" class="panel">
+  <div class="form-group">
+        <label for="c-num">Account number</label>
+        <input id="c-num" type="number" placeholder="e.g. 1001">
+      </div>
+      <div class="form-group">
+        <label for="c-name">Full name</label>
+        <input id="c-name" type="text" placeholder="e.g. Alice Smith">
+      </div>
+      <div class="form-group">
+        <label for="c-bal">Initial balance ($)</label>
+        <input id="c-bal" type="number" placeholder="e.g. 500">
+        </div>
+<button class="btn-primary" onclick=""createAccount()>Create account</button>
+<div id="c-msg" class="message"></div>
+    </div>
+<div id="panel-deposit" class="panel">
+      <div class="form-group">
+        <label for="dw-num">Account number</label>
+        <input id="dw-num" type="number" placeholder="Account number">
+      </div>
+      <div class="form-group">
+        <label for="dw-amt">Amount ($)</label>
+        <input id="dw-amt" type="number" placeholder="Amount">
+      </div>
+      <div class="btn-row">
+      <button onclick="doDeposit()"> Deposit</button>
+      <button onclick="doWithdraw()">Withdraw</button>
+
+      </div>
+      <div id="dw-msg" class="meesage">
+
+      </div>
+    
+
+
+</div>
+<div id="panel-transfer" class="panel">
+      <div class="form-group">
+        <label for="t-from">From account #</label>
+        <input id="t-from" type="number" placeholder="Your account number">
+      </div>
+      <div class="form-group">
+        <label for="t-to">To account #</label>
+        <input id="t-to" type="number" placeholder="Target account number">
+      </div>
+      <div class="form-group">
+        <label for="t-amt">Amount ($)</label>
+        <input id="t-amt" type="number" placeholder="Amount">
+      </div>
+      <button onclick="doTransfer()">↔ Transfer</button>
+      <div id="t-msg" class="message"></div>
+    </div>
+
+</main>
+<script src="banksystem.js"></script>
+    
+</body>
+</html>
