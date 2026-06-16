@@ -1,6 +1,5 @@
 /* ── RESET ───────────────────────────────────────────────── */
 * {
-  /* FIX: Was "border box" (space) → "border-box" (hyphen) */
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -45,7 +44,6 @@ body {
   color: #666;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  /* FIX: Was "margin-botton" (typo) → "margin-bottom" */
   margin-bottom: 0.3rem;
 }
 .summary-value {
@@ -153,22 +151,29 @@ button:hover {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 12px;
+  padding: 14px 12px;
   border: 1px solid #eee;
   border-radius: 10px;
   margin-bottom: 8px;
   background: #fafafa;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+.account-row:hover {
+  background: #f0f2ff;
+  border-color: #c5cae9;
+  box-shadow: 0 2px 8px rgba(26,26,46,0.07);
 }
 .account-avatar {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   background: #e8eaf6;
   color: #3949ab;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.85rem;
   flex-shrink: 0;
 }
@@ -180,10 +185,17 @@ button:hover {
   font-size: 0.8rem;
   color: #888;
 }
-.account-balance {
+.account-balance-masked {
   margin-left: auto;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  color: #bbb;
+  letter-spacing: 0.08em;
+}
+.account-chevron {
+  color: #bbb;
+  font-size: 0.9rem;
+  flex-shrink: 0;
 }
 
 /* ── MESSAGES ────────────────────────────────────────────── */
@@ -206,4 +218,198 @@ button:hover {
   font-size: 0.875rem;
   color: #999;
   padding: 1rem 0;
+}
+
+/* ── DETAIL OVERLAY (backdrop) ───────────────────────────── */
+.detail-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 100;
+  align-items: flex-end;   /* sheet slides up from bottom */
+  justify-content: center;
+}
+.detail-overlay.open {
+  display: flex;
+}
+
+/* ── DETAIL SHEET ────────────────────────────────────────── */
+.detail-sheet {
+  background: white;
+  border-radius: 20px 20px 0 0;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 0 2rem;
+  animation: slideUp 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+  max-height: 92vh;
+  overflow-y: auto;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+/* drag handle */
+.sheet-handle {
+  width: 40px;
+  height: 4px;
+  background: #ddd;
+  border-radius: 2px;
+  margin: 14px auto 0;
+}
+
+/* ── DETAIL HEADER ───────────────────────────────────────── */
+.detail-header {
+  background: #1a1a2e;
+  color: white;
+  padding: 1.6rem 1.8rem 1.8rem;
+  margin-bottom: 1.4rem;
+  position: relative;
+}
+.detail-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.15s;
+}
+.detail-close-btn:hover {
+  background: rgba(255,255,255,0.28);
+}
+.detail-holder-name {
+  font-size: 1.05rem;
+  font-weight: 500;
+  opacity: 0.75;
+  margin-bottom: 0.2rem;
+}
+.detail-account-num {
+  font-size: 0.82rem;
+  opacity: 0.5;
+  margin-bottom: 1rem;
+}
+
+/* balance row with eye toggle */
+.detail-balance-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.detail-balance-label {
+  font-size: 0.75rem;
+  opacity: 0.55;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: block;
+  margin-bottom: 2px;
+}
+.detail-balance-amount {
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.detail-balance-amount.masked {
+  letter-spacing: 0.12em;
+  font-size: 1.8rem;
+  opacity: 0.6;
+}
+.eye-btn {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  width: 34px;
+  height: 34px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+  transition: background 0.15s;
+  margin-top: 16px;
+}
+.eye-btn:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* ── QUICK ACTIONS ───────────────────────────────────────── */
+.detail-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 0 1.4rem;
+  margin-bottom: 1.4rem;
+}
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 8px;
+  border-radius: 12px;
+  border: 1px solid #e8eaf6;
+  background: #f4f5ff;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #1a1a2e;
+  transition: background 0.15s, border-color 0.15s;
+}
+.action-btn:hover {
+  background: #e8eaf6;
+  border-color: #c5cae9;
+}
+.action-btn span.icon {
+  font-size: 1.3rem;
+}
+
+/* ── INLINE ACTION FORM (inside sheet) ───────────────────── */
+.sheet-form {
+  display: none;
+  padding: 0 1.4rem;
+}
+.sheet-form.open {
+  display: block;
+}
+.sheet-form h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+.sheet-form .form-group {
+  margin-bottom: 0.85rem;
+}
+
+/* ── CLOSE ACCOUNT SECTION ───────────────────────────────── */
+.detail-danger {
+  padding: 0 1.4rem;
+  margin-top: 1rem;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1rem;
+}
+.btn-danger {
+  background: white;
+  color: #c62828;
+  border-color: #e57373;
+  font-size: 0.82rem;
+  padding: 7px 16px;
+}
+.btn-danger:hover {
+  background: #fdecea;
 }
